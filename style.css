@@ -50,3 +50,48 @@ body {
 .key:focus {
 	outline: none;
 }
+.key.equal,
+.key.enter {
+    color: hsl(120, 80%, 60%);
+}
+
+.key.c {
+    color: hsl(0, 80%, 60%);
+}
+
+.key.divide {
+    color: hsl(270, 80%, 60%);
+}
+
+.key.multiply {
+    color: hsl(50, 80%, 60%);
+}
+
+.key.subtract {
+    color: hsl(210, 80%, 60%);
+}
+
+.key.add {
+    color: hsl(25, 80%, 60%);
+}
+
+.key + .key {
+    margin-left: var(--gap);
+}
+
+.key:before {
+    display: block;
+    content: attr(data-code);
+}
+
+.key.stretch {
+    padding: 0 25px;
+}
+
+.key.stretch:before {
+    width: 100%;
+}
+
+.key.empty:before {
+    display: none;
+}
