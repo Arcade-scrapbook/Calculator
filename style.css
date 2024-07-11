@@ -91,6 +91,19 @@ body {
 .key.stretch:before {
     width: 100%;
 }
+.display {
+    width: 100%;
+    height: 50px;
+    background: #141414;
+    color: white;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 10px;
+    box-sizing: border-box;
+    margin-bottom: var(--gap);
+}
 
 .key.empty:before {
     display: none;
