@@ -6,8 +6,14 @@ let currentInput = '';
 keys.forEach(key => {
     key.addEventListener('click', () => {
         handleInput(key.textContent);
-        key.classList.add('active');
-        setTimeout(() => key.classList.remove('active'), 100);
+        if (key.textContent === '=') {
+            key.classList.add('active');
+            setTimeout(() => key.classList.remove('active'), 100);
+            triggerGlowAnimation();
+        } else {
+            key.classList.add('active');
+            setTimeout(() => key.classList.remove('active'), 100);
+        }
     });
 });
 
@@ -19,6 +25,9 @@ window.addEventListener('keydown', e => {
         if (keyElement) {
             keyElement.classList.add('active');
             setTimeout(() => keyElement.classList.remove('active'), 100);
+            if (key === '=') {
+                triggerGlowAnimation();
+            }
         }
     }
 });
@@ -38,4 +47,11 @@ function handleInput(input) {
         currentInput += input;
     }
     display.textContent = currentInput || '0';
+}
+
+function triggerGlowAnimation() {
+    keys.forEach(key => {
+        key.classList.add('glow');
+        setTimeout(() => key.classList.remove('glow'), 500);
+    });
 }
