@@ -3,13 +3,6 @@
     --key-width: 50px;
 }
 
-@media (max-width: 480px) {
-    :root {
-        --gap: 10px;
-        --key-width: 40px;
-    }
-}
-
 body {
     margin: 0;
     overflow: hidden;
@@ -150,4 +143,11 @@ body {
     box-sizing: border-box;
     border-radius: 7.5px;
     margin-bottom: var(--gap);
+}
+
+@media (max-width: 480px) {
+    :root {
+        --gap: 10px;
+        --key-width: 40px;
+    }
 }
