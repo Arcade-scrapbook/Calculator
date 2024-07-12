@@ -5,8 +5,8 @@ let currentInput = '';
 
 keys.forEach(key => {
     key.addEventListener('click', () => {
-        handleInput(key.textContent);
-        if (key.textContent === '=') {
+        handleInput(key.dataset.code);
+        if (key.dataset.code === '=') {
             key.classList.add('active');
             setTimeout(() => key.classList.remove('active'), 100);
             triggerGlowAnimation();
@@ -50,8 +50,22 @@ function handleInput(input) {
 }
 
 function triggerGlowAnimation() {
+    const centerX = keyboard.offsetWidth / 2;
+    const centerY = keyboard.offsetHeight / 2;
+
     keys.forEach(key => {
-        key.classList.add('glow');
-        setTimeout(() => key.classList.remove('glow'), 500);
+        const rect = key.getBoundingClientRect();
+        const keyX = rect.left + rect.width / 2;
+        const keyY = rect.top + rect.height / 2;
+        const distance = Math.sqrt(Math.pow(centerX - keyX, 2) + Math.pow(centerY - keyY, 2));
+
+        setTimeout(() => {
+            key.style.setProperty('--color', 'hsl(120, 80%, 60%)');
+            key.classList.add('active');
+            setTimeout(() => {
+                key.classList.remove('active');
+                key.style.removeProperty('--color');
+            }, 200);
+        }, distance * 0.5);
     });
 }
